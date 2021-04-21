@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "7AlX8iLKZr0VXFKrBcdBXwLYgJjuuTMtT3j0RiGdeHk70w5Dkj1UShzpEY57VKNBQknocYEv8+4/ZBv5B5D6hA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Eugen\\source\\repos\\HomeWork\\HomeWork\\HomeWork.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Eugen\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\Eugen\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.12\\microsoft.netcore.app.host.win-x64.3.1.12.nupkg.sha512"
+  ],
+  "logs": []
+}

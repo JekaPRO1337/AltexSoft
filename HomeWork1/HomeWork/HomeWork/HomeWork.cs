@@ -18,7 +18,6 @@ namespace HomeWork1
             string previousDestination = default;
             string currentDestination = default;
             decimal rateEUR = 1.20m;
-            int someIterator = 0;
 
             if (!CheckInput(destinations, clients, prices, currencies))
                 return default;
@@ -28,6 +27,7 @@ namespace HomeWork1
             using var pricesEnumerator = prices.GetEnumerator();
             using var currenciesEnumerator = currencies.GetEnumerator();
 
+            int i = 0;
 
             while (clientsEnumerator.MoveNext())
             {
@@ -36,9 +36,9 @@ namespace HomeWork1
                 currenciesEnumerator.MoveNext();
 
                 currentDestination = destinationsEnumerator.Current;
-                previousDestination = currentDestination;
 
-                decimal orderPrice = pricesEnumerator.Current;
+                var orderPrice = pricesEnumerator.Current;
+                discount = 0;
 
                 if (currenciesEnumerator.Current == "EUR")
                 {
@@ -54,50 +54,64 @@ namespace HomeWork1
                     orderPrice -= 5.36m;
                 }
 
-                if (CheckInfant(infantsIds, someIterator))
+                if (CheckInfant(infantsIds, i))
                 {
                     discount += 0.5;
                 }
-                else if (CheckChildren(childrenIds, someIterator))
+                else if (CheckChildren(childrenIds, i))
                 {
                     discount += 0.25;
                 }
 
-                if (previousDestination == currentDestination)
+                if (i != 0 && GetStreet(previousDestination) == GetStreet(currentDestination))
                 {
                     discount += 0.15;
                 }
 
-                orderPrice = orderPrice * (decimal)discount;
+                previousDestination = currentDestination;
+
+                orderPrice -= orderPrice * (decimal)discount;
                 fullPrice += orderPrice;
+
+                i++;
             }
 
             return fullPrice;
         }
 
-        private bool CheckInfant(IEnumerable<int> infantsIds, int someIterator)
+        private bool CheckInfant(IEnumerable<int> infantsIds, int i)
         {
             bool result = default;
             foreach (int infant in infantsIds)
             {
-                if (someIterator == infant)
+                if (i == infant)
+                {
                     result = true;
+                    break;
+                }
                 else
+                {
                     result = false;
+                }
             }
 
             return result;
         }
 
-        private bool CheckChildren(IEnumerable<int> childrenIds, int someIterator)
+        private bool CheckChildren(IEnumerable<int> childrenIds, int i)
         {
             bool result = default;
-            foreach (int infant in childrenIds)
+            foreach (int children in childrenIds)
             {
-                if (someIterator == infant)
+                if (i == children)
+                {
                     result = true;
+                    break;
+                }
                 else
+                {
                     result = false;
+                }
             }
 
             return result;
@@ -105,24 +119,15 @@ namespace HomeWork1
 
         private decimal EURtoUSD(decimal price, decimal rate)
         {
-            decimal USDprice = default;
-
-            USDprice = price * rate;
-
-            return USDprice;
+            return price * rate;
         }
 
         private string GetStreet(string destination)
         {
-            string[] destinationArr = destination.Split(',');
-            List<string> address = new List<string>();
-            string dest = default;
+            var destinationArr = destination.Split(',');
+            var address = destinationArr[0].Split(' ').ToList<string>();
 
-            address = destinationArr[0].Split(' ').ToList<string>();
-
-            dest = string.Join(' ', address.Skip(1));
-
-            return dest;
+            return string.Join(' ', address.Skip(1));
         }
 
         private bool CheckInput(IEnumerable<string> destinations, IEnumerable<string> clients,
