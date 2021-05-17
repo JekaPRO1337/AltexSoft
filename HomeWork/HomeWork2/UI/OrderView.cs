@@ -10,19 +10,19 @@ namespace HomeWork2.UI
     {
         public void PrintClient(Order order)
         {
-            Console.WriteLine($"Client: {order.GetClient().Name}");
+            Console.WriteLine($"Client: {order.Client.Name}");
         }
 
         public void PrintSeller(Order order)
         {
-            Console.WriteLine($"Seller: {order.GetSeller()}");
+            Console.WriteLine($"Seller: {order.Seller.Name}");
         }
 
         public void PrintProducts(Order order)
         {
             Console.WriteLine("------------------------");
             Console.WriteLine("Order:");
-            foreach (Product product in order.GetProducts())
+            foreach (Product product in order.Products)
             {
                 Console.WriteLine($"{product.Name} | {product.Price}");
             }

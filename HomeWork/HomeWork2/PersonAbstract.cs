@@ -12,9 +12,5 @@ namespace HomeWork2
 
         public abstract string GetFullname();
 
-        public PersonAbstract(int id)
-        {
-
-        }
     }
 }
