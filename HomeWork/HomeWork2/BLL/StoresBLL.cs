@@ -10,17 +10,17 @@ namespace HomeWork2.BLL
     {
         public Product GetProduct(Store store, int id)
         {
-            return store.Assortment[id];
+            return store.Products[id];
         }
 
         public void AddProduct(Store store, Product product)
         {
-            store.Assortment.Add(product);
+            store.Products.Add(product);
         }
 
         public void AddProduct(Store store, int id, string name, decimal price, ProductType? productType)
         {
-            store.Assortment.Add(new Product(id, name, price, productType));
+            store.Products.Add(new Product(id, name, price, productType));
         }
 
         public string GetProductName(ProductType? productType)

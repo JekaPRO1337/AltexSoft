@@ -13,7 +13,7 @@ namespace HomeWork2
         {
             get
             {
-                foreach (Product product in Products)
+                foreach (var product in Products)
                     _orderPrice += product.Price;
                 return _orderPrice;
             }
@@ -28,6 +28,5 @@ namespace HomeWork2
             this.Seller = seller;
             this.Client = client;
         }
-
     }
 }

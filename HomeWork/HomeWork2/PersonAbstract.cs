@@ -9,7 +9,6 @@ namespace HomeWork2
     public abstract class PersonAbstract
     {
         public string Name { get; set; }
-
         public abstract string GetFullname();
 
     }

@@ -9,7 +9,7 @@ namespace HomeWork2
     public class Store
     {
         public string Name { get; set; }
-        public List<Product> Assortment = new List<Product>();
+        public List<Product> Products = new List<Product>();
 
         public Store(string Name)
         {
